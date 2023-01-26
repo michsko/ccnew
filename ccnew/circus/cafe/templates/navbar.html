@@ -1,0 +1,94 @@
+
+{% load static %}
+<nav class="navbar navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">cirkus<strong>CAFE</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      {% if user.is_authenticated %}
+      <div class="offcanvas-header">
+          <h5 class="offcanvas-title">{{user.username}}</h3>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      {% else %}
+        <div class="offcanvas-header">  <a class="navbar-brand" href="{% url 'index'%}">
+         <img src="" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+    </a>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Domácí
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="">Vysočina</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="">Celá ČR</a></li>
+          </ul>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="">Světové</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Politika</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Obchod</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Právo</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Blog
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li><a class="dropdown-item" href="{% url 'blog_posts' user.id %}">Číst</a></li>
+            <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="{% url 'blog_add' %}">Přidat</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""><strong>CIRKUS</strong></a>
+        </li>
+             {% if user.is_authenticated %}
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Uživatel
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark">
+          <li><a class="dropdown-item" href="{% url 'profile' request.user.id %}">Váš profil</a></li>
+           <hr class="dropdown-divider">
+            <li><a class="dropdown-item" href="{% url 'profile_list' %}">Profily uživatelů</a></li>
+             <hr class="dropdown-divider">
+             <li><a class="dropdown-item" href="{% url 'logout_user' %}">Odhlásit</a></li>
+          {% else %}
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Uživatel
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark">
+              <li><a class="dropdown-item" href="{% url 'login_user' %}">Přihlásit</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item" href="{% url 'register_user' %}">Registrovat</a></li>
+            </ul> 
+          </li>
+          {% endif %}
+        </ul>
+        <form class="d-flex mt-3" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </div> 
+</nav>

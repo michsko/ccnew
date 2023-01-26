@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<center>
+	<br/><br/><br/>
+	<div class="card text-center mb-3 shadow" style="width: 22rem;">
+  		<div class="card-body">
+			<br/><br/><br/>
+			<h2>Login</h2>
+			<br/>
+  <form action="" method=POST>
+  	{% csrf_token %}
+  		<div class="mb-3">
+    		<label class="form-label">Uživatelské jméno</label>
+    		<input type="text" class="form-control" name="username">
+  		</div>
+  		<div class="mb-3">
+    		<label class="form-label">Heslo</label>
+    		<input type="password" class="form-control" name="password">
+    		<br/>
+  		</div>
+  		<button type="submit" class="btn btn-secondary">LOGIN</button><br/><br/>
+
+  </form>
+</div>
+</div>
+</center>
+{% endblock %}

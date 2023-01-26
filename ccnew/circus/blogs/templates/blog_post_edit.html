@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == blog_post.owner %}
+<center>
+  <div class="container">
+  <br/><br/><br/>
+	<div class="card text-center mb-3 shadow" style="width: 70rem;">
+  		<div class="card-body">
+			<br/><br/><br/>
+			<h2>Přidat příspěvek</h2>
+			<br/>
+ <form action="" method=POST>
+  	{% csrf_token %}
+  	{{ form }}
+  	<br/><br/>
+  	<button type="submit" class="btn btn-secondary">Upravit</button><br/><br/>
+  </form>
+<br/><br/>
+
+{% else %}
+<div class="container">
+<br/><br/><br/>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role='alert'>Pro úpravu příspěvků musíte být jejich autorem.<button type="button" class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+  {% endif %}
+
+{% else %}
+
+<div class="container">
+<br/><br/><br/>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role='alert'>Pro prohlížení svých příspěvků musíte být přihlášeni.<button type="button" class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+</div>
+
+{% endif %}
+</div>
+</center>
+{% endblock %}

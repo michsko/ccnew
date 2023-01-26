@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+
+
+
+<div class="container">
+  <br/><br/><br/><br/>
+</div>
+<div class="container shadow">
+<br/><br/>
+<h1> Vaše příspěvky </h1>
+<br/><br/>
+
+{% for blog_post in blog_posts %}
+
+<div class="card shadow">
+  <div class="card-header">
+    {{blog_post.name}} , {{blog_post.theme}}
+  </div>
+  
+  <div class="card-body">
+    	<h5 class="card-title"><strong>{{ blog_post.title }}</strong></h5>
+    	<p class="card-text">{{blog_post.content}} </p><br/>
+    <div align="right">
+    	<a href="{% url 'blog_post' blog_post.id %}" class="btn btn-secondary">Zobrazit</a>
+  	</div>
+  </div>
+  <div class="card-footer text-muted">
+  {{ blog_post.date_published }} | autor: <strong>{{ blog_post.author }}</strong>
+  </div>
+</div>
+<br/><br/><br/>
+{% endfor %}
+
+<div class="container">
+<br/><br/><br/><br/>
+</div>
+</div>
+
+
+{% else %}
+
+<div class="container">
+<br/><br/><br/>
+</div>
+
+<div class="alert alert-warning alert-dismissible fade show" role='alert'>Pro prohlížení svých příspěvků musíte být přihlášeni.<button type="button" class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+</div>
+
+
+
+{% endif %}
+</div>
+{% endblock %}
