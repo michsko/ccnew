@@ -5,6 +5,7 @@ from . import views
 
 urlpatterns=[
 
-path('', views.circus, name='circus'),
+path('circus_mapa', views.circus_mapa, name='circus_mapa'),
+path('circus_volby', views.circus_volby, name='circus_volby'),
 
 ]
