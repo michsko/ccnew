@@ -9,6 +9,7 @@ from .models import Kraj
 import os
 import urllib.request
 from bs4 import BeautifulSoup
+import csv
 # Create your views here.
 
 def circus_mapa(request):
@@ -38,27 +39,42 @@ def circus_volby(request):
 
 	#vysledky kraj
 		for item in vysledky.findAll('KRAJ'):
-			# nazev_kraje = item['NAZ_KRAJ']
-				
+			# nazev_kraje = item['NAZ_KRAJ'
+			print(1)
 			print(item)
+			
+		with open('info/static/csv/vysledky_kraj', 'w') as file_kraj:
+			writer = csv.writer(file_kraj)
+			writer.writerow(item)
+	
 	#vysledky kraj konec
 
 
 	#vysledky okres
-	# 	for item in vysledky.findAll('OKRES'):
+		for item in vysledky.findAll('OKRES'):
 	# 		nazev_okresu = item['NAZ_OKRES']
 	# 		kandidat = item["PORADOVE_CISLO"]
 	# 		kandidat_hlasy = item['HLASY']		
-	# 		print(nazev_okresu, kandidat, kandidat_hlasy)
+	 		print(2)
+	 		print(item)
+	 		# with open('info/static/csv/vysledky_okres', 'w') as file_okres:
+	 		# 	writer = csv.writer(file_okres)
+	 		# 	writer.writerow(item)
+	
+
 	# #vysledky okres konec
+
+	
+	
 
 
 	#vysledky obec 
-		for item in vysledky.findAll('OBEC'):
+	#	for item in vysledky.findAll('OBEC'):
 	# 		nazev_obce = item['NAZ_OBEC']
 	# 		kandidat = item["PORADOVE_CISLO"]
 	# 		kandidat_hlasy = item['HLASY']		
-	 		print(item)
+	#		print(3)
+	#		print(item)
 	# #vysledky obec konec
 			
 
@@ -76,15 +92,15 @@ def circus_volby(request):
 		
 	okrsky_id_map = {}
 	
-	volebni_okrsky = json.load(open('info/static/json/volebni_okrsky-simple.json', 'r'))
+	volebni_okrsky = json.load(open('info/static/json/vol_okrsky.geojson', 'r'))
 	for feature in volebni_okrsky['features']:
-		feature['id'] = feature['properties']['KOD']
+		feature['id'] = feature['properties']['Kod']
 	
-		okrsky_id_map[feature['properties']['OBEC_KOD']] = feature['id']
+		okrsky_id_map[feature['properties']['Kod']] = feature['id']
 	
-	data = pd.read('')
+	data = data
 
-	px.choropleth(data, locations='id', geojson='volebni_okrsky', color='babis/pavel', )
+	px.choropleth(data, locations='id', geojson='volebni_okrsky', color='', )
 	
 
 	
