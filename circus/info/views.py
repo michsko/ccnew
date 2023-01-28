@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 import folium 
 from folium import plugins
 from .models import Obec
+import json
 # Create your views here.
 
 def circus_mapa(request):
@@ -16,7 +17,12 @@ def circus_mapa(request):
 
 		})
 
+
+
 def circus_volby(request):
-
-
+	
+	volebni_okrsky = json.load(open('info/static/json/volebni_okrsky-simple.json', 'r'))
+	print(volebni_okrsky['features'][0])
+	
 	return render(request, 'circus_volby.html',{})
+
