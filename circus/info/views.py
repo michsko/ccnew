@@ -39,9 +39,8 @@ def circus_volby(request):
 	#vysledky kraj
 		for item in vysledky.findAll('KRAJ'):
 			# nazev_kraje = item['NAZ_KRAJ']
-			print(1)
 				
-		print(item)
+			print(item)
 	#vysledky kraj konec
 
 
@@ -55,11 +54,11 @@ def circus_volby(request):
 
 
 	#vysledky obec 
-	# 	for item in vysledky.findAll('OBEC'):
+		for item in vysledky.findAll('OBEC'):
 	# 		nazev_obce = item['NAZ_OBEC']
 	# 		kandidat = item["PORADOVE_CISLO"]
 	# 		kandidat_hlasy = item['HLASY']		
-	# 		print(nazev_obce, kandidat, kandidat_hlasy)
+	 		print(item)
 	# #vysledky obec konec
 			
 
