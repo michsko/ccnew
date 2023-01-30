@@ -4,7 +4,15 @@
 {% if user.is_authenticated %}
 
 <div class="container">
+	<br/><br/><br/><br/>
 
+	<a href="{% url 'create_csv1' %}">1kolo stahnou csv</a><br/>
+
+	<a href="{% url 'create_csv2' %}">2kolo stahnou csv</a><br/>
+
+	<a href="{% url 'zastupitele_csv' %}">zastupitele stahnou csv</a><br/>
+
+	<a href="{% url 'obce_csv' %}">obce stahnou csv</a><br/>
 
 {% else %}
 

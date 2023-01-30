@@ -90,4 +90,46 @@ class ZastupitelKraje(models.Model):
 	def __str__(self):
  		return "%s %s %s" % (self.title, self.last_name, self.first_name)
 
+class VolebVyslPrez2023Obec2koloAdmin(admin.ModelAdmin):
+	search_fields = ['cislo_kraje', 'cislo_obce','nazev_obce','hlasy_Pavel', 'hlasy_Babis',
+	 'platne_hlasy','plat_hlas_procenta','ucast_proc','zapsani_volici']
 
+class VolebVyslPrez2023Obec2kolo(models.Model):
+	cislo_kraje = models.CharField('Číslo kraje', max_length=255)
+	cislo_obce = models.CharField('Číslo obce', max_length=255)
+	nazev_obce = models.CharField('Jméno obce', max_length=255)
+	hlasy_Pavel = models.CharField('Hlasy Petr Pavel', max_length=255, blank=True)
+	hlasy_Babis = models.CharField('Hlasy Andrej Babiš', max_length=255, blank=True)
+	platne_hlasy = models.CharField('Platné hlasy', max_length=255)
+	plat_hlas_procenta = models.CharField('Platné hlasy v procentech', max_length=255)
+	ucast_proc = models.CharField('Účast v procentech', max_length=255)
+	zapsani_volici = models.CharField('Zapsaní voliči', max_length=255)
+	
+
+	def __str__(self):
+ 		return self.nazev_obce
+
+
+class VolebVyslPrez2023Obec1koloAdmin(admin.ModelAdmin):
+	search_fields = ['cislo_kraje','cislo_obce','nazev_obce','hlasy_Pavel', 'hlasy_Babis',
+	 'platne_hlasy','plat_hlas_procenta','ucast_proc','zapsani_volici']
+
+class VolebVyslPrez2023Obec1kolo(models.Model):
+	cislo_kraje = models.CharField('Číslo kraje', max_length=255)
+	cislo_obce = models.CharField('Číslo obce', max_length=255)
+	nazev_obce = models.CharField('Jméno obce', max_length=255)
+	hlasy_Fischer = models.CharField('Hlasy Pavel Fischer', max_length=255, blank=True)
+	hlasy_Basta = models.CharField('Hlasy Jaroslav Bašta', max_length=255, blank=True)
+	hlasy_Pavel = models.CharField('Hlasy Petr Pavel', max_length=255, blank=True)
+	hlasy_Zima = models.CharField('Hlasy Tomáš Zima', max_length=255, blank=True)
+	hlasy_Nerudova = models.CharField('Hlasy Danuše Nerudová', max_length=255, blank=True)
+	hlasy_Babis = models.CharField('Hlasy Andrej Babiš', max_length=255, blank=True)
+	hlasy_Divis = models.CharField('Hlasy Karel Diviš', max_length=255, blank=True)
+	hlasy_Hilser = models.CharField('Hlasy Marek Hilšer', max_length=255, blank=True)
+	platne_hlasy = models.CharField('Platné hlasy', max_length=255)
+	plat_hlas_procenta = models.CharField('Platné hlasy v procentech', max_length=255)
+	ucast_proc = models.CharField('Účast v procentech', max_length=255)
+	zapsani_volici = models.CharField('Zapsaní voliči', max_length=255)
+	
+	def __str__(self):
+ 		return self.nazev_obce
