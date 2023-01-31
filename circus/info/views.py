@@ -4,7 +4,7 @@ from folium import plugins
 from .models import Obec, VolebVyslPrez2023Obec1kolo, VolebVyslPrez2023Obec2kolo
 from .models import Zastupitel
 import json
-import plotly.express as px
+import plotly.figure_factory as ff
 import pandas as pd 
 from .models import Kraj
 import os
@@ -33,11 +33,37 @@ def circus_mapa(request):
 
 		})
 
-
-
 def circus_volby(request):
 
-	return render(request, 'circus_volby.html',{})
+	return render(request, 'circus_volby.html')
+
+
+def circus_volby_kolo2(request):
+
+	hranice_obci = json.load(open('info/static/json/obce-simple.json', 'r'))
+
+	data_frame = pd.read_csv('info/static/csv/vysl_prez_volby_23_2k.csv')
+
+	data_frame_new = data_frame['obec_nazev'] 
+
+	hlasy_Pavel = data_frame_new['hlasy_Pavel'].tolist()
+	
+	obec_cislo = data_frame['obec_cislo'].tolist()
+
+					#blue      #green
+	colorscale = ['#2d07fe', '#2dc059']
+
+	fig == ff.create_choropleth(obec_cislo=obec_cislo, hlasy_Babis=hlasy_Babis, 
+		hlasy_Pavel=hlasy_Pavel, colorscale=colorscale, round_legend_values=True, 
+		simplyfy_county=0, simplyfy_state=0, 
+		county_outline={'color': 'rgb(15,15,55', 'width': 0.5} ,
+		legend_title="Vysledky voleb 2023 2.kolo", title='Česká republika')
+
+	map = iplot(fig, filename="cr vysledky")
+
+	return render(request, 'circus_volby_kolo2.html',{
+		'map': map
+		})
 
 
 
