@@ -35,13 +35,37 @@ def run():
 		hlasy_Babis = "0"
 		hlasy_Divis = "0"
 		hlasy_Hilser = "0"
+
+
+		# untested match case version
+		
+		match item:
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '1'}):
+		        hlasy_Fischer = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '2'}):
+			hlasy_Basta = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '4'}):				
+			hlasy_Pavel = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '5'}):
+			hlasy_Zima = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '6'}):
+			hlasy_Nerudova = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '7'}):
+		        hlasy_Babis = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '8'}):
+		        hlasy_Divis = vysledek.get('HLASY')
+		    case item.findAll('HODN_KAND', {'PORADOVE_CISLO': '9'}):
+		        hlasy_Hilser = vysledek.get('HLASY')
+
+		
+		"""
 		for vysledek in item.findAll('HODN_KAND', {'PORADOVE_CISLO': '1'}):
 			hlasy_Fischer = vysledek.get('HLASY')
 
 		for vysledek in item.findAll('HODN_KAND', {'PORADOVE_CISLO': '2'}):
 			hlasy_Basta = vysledek.get('HLASY')
 
-		for vysledek in item.findAll('HODN_KAND', {'PORADOVE_CISLO': '4'}):
+		for vysledek in item.findAll('HODN_KAND', {'PORADOVE_CISLO': '4'}):																											
 			hlasy_Pavel = vysledek.get('HLASY')
 
 		for vysledek in item.findAll('HODN_KAND', {'PORADOVE_CISLO': '5'}):	
@@ -59,7 +83,7 @@ def run():
 		for vysledek in item.findAll('HODN_KAND', {'PORADOVE_CISLO': '9'}):
 			hlasy_Hilser = vysledek.get('HLASY')
 			
-
+"""
 		for vysledek in item.findAll('UCAST'):
 		
 			platne_hlasy = vysledek.get('PLATNE_HLASY')
