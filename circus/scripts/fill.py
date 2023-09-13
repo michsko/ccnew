@@ -2,9 +2,6 @@ from bs4 import BeautifulSoup
 from info.models import Zastupitel, Obec
 import urllib.request
 
-
-
-
 def run():
 	
 	Zastupitel.objects.all().filter(first_name=name, last_name=)
@@ -17,7 +14,6 @@ def run():
 		req = urllib.request.urlopen(f"https://www.volby.cz/pls/kv2022/vysledky_obec?datumvoleb=20220923&cislo_obce={kod_obce}")
 
 		person = BeautifulSoup(req, 'xml')
-
 
 		for item in person.findAll('ZASTUPITEL'):
 			jmeno = item['JMENO']
@@ -33,7 +29,3 @@ def run():
 				title = titul, title_b = titul_b, absolutni_hlasy = hlasy, 
 				hlasy_v_procentech = hlasy_proc, obec = obec, kod_obce=kod_obce,
 				kraj=kraj)
-
-
-	
-
